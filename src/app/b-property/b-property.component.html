@@ -1,0 +1,25 @@
+<input type="button" value="Click me" class="btn btn-primary">
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td [colSpan]="colSpan">1</td>
+            <!-- <td>2</td> -->
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="alert alert-info"
+    [style.backgroundColor]="color"
+> Hello </div>
+
+
+Select Color: <input type="color" #the_color>
+<input type="button" value="Apply" (click)="applyColor(the_color.value)">
