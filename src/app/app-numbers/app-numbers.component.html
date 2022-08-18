@@ -1,0 +1,39 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6"><h1> Time: {{ timeleft }}</h1></div>
+        <div class="col-lg-6"><h1> Point: {{ point }}</h1></div>
+    </div>
+    
+    <div class="row" [ngStyle]="{
+        'marginTop': '5px'
+    }">
+        <div class="col-lg-12">
+            <input class="btn btn-info" *ngIf="!isPlayingGame" type="button" value="Play Game" (click)="playGame()">
+            <input class="btn btn-danger" *ngIf="isPlayingGame" type="button" value="Stop" (click)="stopGame()">
+        </div>
+    </div>
+    <div class="row" 
+    *ngIf="isPlayingGame"
+    [ngStyle]="{
+        'marginTop': '5px'
+    }">
+        <div class="col-lg-1" 
+            [ngStyle]="{
+                'marginBottom': '5px'
+            }"
+            *ngFor="let number of numbers ">
+            <input type="button" [value]="number" 
+            class="btn btn-info btn-block"
+            [ngClass]="{
+                'btn-danger' : number <= point
+            }"
+            (click)="play(number)"
+            >
+        </div>
+    </div>
+</div>
+
+
+
+
