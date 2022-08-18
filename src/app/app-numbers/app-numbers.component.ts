@@ -11,11 +11,14 @@ export class AppNumbersComponent implements OnInit, OnChanges {
   numbers:number[] = [];
   point:number = 0;
   next:number = 1;
-  timeleft:number = 60;
+  timeleft:number = 0;
+  timeStart:any = false;
+  maxTime:number = 5;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.timeleft = this.maxTime;
     for( let i = 1; i <= 100; i++ ){
       this.numbers.push(i)
     }
@@ -25,6 +28,39 @@ export class AppNumbersComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     console.log('ngOnChanges');
+  }
+
+  ngDoCheck(): void {
+    if( this.isPlayingGame == true ){
+      if(!this.timeStart){
+        this.timeStart  = setInterval( () => {
+          this.timeleft--;
+        }, 1000 )
+      }
+    }
+    // chay khi co du lieu thay doi
+    console.log( this.isPlayingGame )
+    console.log('ngDoCheck');
+
+    if( this.isPlayingGame == true ){
+      if( this.timeleft <= 0 ){
+        this.resetGame();
+      }
+    }
+
+  }
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
+  }
+
+  resetGame():void {
+    alert('Game Over');
+    this.isPlayingGame = false;
+    this.next = 1;
+    this.point = 0;
+    this.timeleft = this.maxTime;
+    clearInterval(this.timeStart);
+    this.timeStart = null;
   }
 
   playGame():void {
@@ -45,7 +81,7 @@ export class AppNumbersComponent implements OnInit, OnChanges {
       //xao tron mang
       this.numbers = this.shuffle(this.numbers);
     }else{
-      alert('Game Over !')
+      this.resetGame();
     }
   }
 
