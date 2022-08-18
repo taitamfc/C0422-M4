@@ -68,7 +68,7 @@ export class AppNumbersComponent implements OnInit, OnChanges {
   }
 
   stopGame():void {
-    this.isPlayingGame = false;
+    this.resetGame();
   }
 
   play(number:number):void {
