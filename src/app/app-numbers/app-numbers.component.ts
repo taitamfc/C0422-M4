@@ -104,3 +104,13 @@ export class AppNumbersComponent implements OnInit, OnChanges {
   }
 
 }
+
+/*
+- tao next = 1, point = 0
+- tao mang number tu 1 - 100
+- render ra view
+- bat su kien nhan so
+- so sanh next voi number truyen vao
+- neu khong bang thi game over
+- neu bang thi point ++, next ++
+*/
