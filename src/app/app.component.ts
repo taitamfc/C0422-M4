@@ -15,4 +15,8 @@ export class AppComponent {
     // alert(123);
     this.name = 'Nguyen Van C';
   }
+
+  appComponentClick(value:any){
+    alert('appComponentClick' + value);
+  }
 }
