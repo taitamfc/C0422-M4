@@ -1,0 +1,42 @@
+<!-- https://angular.io/guide/form-validation -->
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+            formControlName="name" 
+            type="text" class="form-control" name="name" placeholder="Name" >
+
+            <!-- Show validate -->
+            <p *ngIf="!productForm.controls['name']?.valid && (productForm.controls['name']?.dirty
+            ||productForm.controls['name']?.touched) && productForm.controls['name']?.errors?.['required']"
+            class="help-block text-danger">Name is required</p>
+
+            <p *ngIf="!productForm.controls['name']?.valid && (productForm.controls['name']?.dirty
+            ||productForm.controls['name']?.touched) && productForm.controls['name']?.errors?.['minlength']"
+            class="help-block text-danger">Minlength not valid</p>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input 
+            formControlName="price"
+            type="text" class="form-control" placeholder="Price" >
+
+            <!-- Show validate -->
+             <!-- Show validate -->
+             <p *ngIf="!productForm.controls['price']?.valid && (productForm.controls['price']?.dirty
+            ||productForm.controls['price']?.touched) && productForm.controls['price']?.errors?.['required']"
+            class="help-block text-danger">price is required</p>
+
+            <p *ngIf="!productForm.controls['price']?.valid && (productForm.controls['price']?.dirty
+            ||productForm.controls['price']?.touched) && productForm.controls['price']?.errors?.['minlength']"
+            class="help-block text-danger">Minlength not valid</p>
+
+        </div>
+
+        <div class="form-group">
+            <button [disabled]="!productForm.valid" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
