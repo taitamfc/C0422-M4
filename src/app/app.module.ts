@@ -6,6 +6,7 @@ import { BPropertyComponent } from './b-property/b-property.component';
 import { AppNumbersComponent } from './app-numbers/app-numbers.component';
 import { InputComponent } from './input/input.component';
 import { OutputComponent } from './output/output.component';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { OutputComponent } from './output/output.component';
     BPropertyComponent,
     AppNumbersComponent,
     InputComponent,
-    OutputComponent
+    OutputComponent,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule,

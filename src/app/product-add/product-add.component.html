@@ -1,0 +1,44 @@
+<!-- https://angular.io/guide/form-validation -->
+<div class="container">
+    <form #formProduct="ngForm" (ngSubmit)="handleSubmit(formProduct.value)">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+            ngModel
+            #name="ngModel"
+            required
+            minlength="3"
+            type="text" class="form-control" name="name" placeholder="Name" >
+
+            <!-- Show validate -->
+            <p *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['required']"
+            class="help-block text-danger">Name is required</p>
+
+            <p *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['minlength']"
+            class="help-block text-danger">Minlength not valid</p>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input 
+            ngModel
+            #price="ngModel"
+            required
+            minlength="3"
+            type="text" class="form-control" name="price" placeholder="Price" >
+
+            <!-- Show validate -->
+             <!-- Show validate -->
+             <p *ngIf="name.invalid && (price.dirty || price.touched) && price.errors?.['required']"
+             class="help-block text-danger">price is required</p>
+ 
+             <p *ngIf="price.invalid && (price.dirty || price.touched) && price.errors?.['minlength']"
+             class="help-block text-danger">Minlength not valid</p>
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit" [disabled]="!formProduct.valid" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
