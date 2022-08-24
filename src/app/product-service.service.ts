@@ -9,23 +9,33 @@ export class ProductServiceService {
   products: Product[] = [];
 
   constructor() {
-    this.products = [
-      {
-        id:1,
-        name:'Iphone 7',
-        price:20000
-      },
-      {
-        id:2,
-        name:'Iphone 8',
-        price:20000
-      },
-      {
-        id:3,
-        name:'Iphone 9',
-        price:20000
-      }
-    ];
+
+    let old_products = window.localStorage.getItem('products');
+    if( !old_products ){
+      this.products = [
+        {
+          id:1,
+          name:'Iphone 7',
+          price:20000
+        },
+        {
+          id:2,
+          name:'Iphone 8',
+          price:20000
+        },
+        {
+          id:3,
+          name:'Iphone 9',
+          price:20000
+        }
+      ];
+      let stringProducts = JSON.stringify(this.products);
+      window.localStorage.setItem('products',stringProducts);
+    }else{
+      this.products = JSON.parse(old_products);
+    }
+
+    
   }
 
   // lay tat ca
@@ -53,6 +63,9 @@ export class ProductServiceService {
   //luu
   save(product:Product){
     this.products.push(product);
+
+    let stringProducts = JSON.stringify(this.products);
+    window.localStorage.setItem('products',stringProducts);
   }
 
   //cap nhat
@@ -63,6 +76,9 @@ export class ProductServiceService {
     //     this.products[i] = product
     //   }
     // }
+
+    let stringProducts = JSON.stringify(this.products);
+    window.localStorage.setItem('products',stringProducts);
   }
 
   //xoa
