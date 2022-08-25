@@ -9,11 +9,10 @@ import { BPropertyComponent } from './b-property/b-property.component';
 import { AppNumbersComponent } from './app-numbers/app-numbers.component';
 import { InputComponent } from './input/input.component';
 import { OutputComponent } from './output/output.component';
-import { ProductAddComponent } from './product-add/product-add.component';
-import { ProductEditComponent } from './product-edit/product-edit.component';
-import { ProductListComponent } from './product-list/product-list.component';
 
 import { AppRoutingModule } from "./app-routing.module";
+
+import { ProductModule } from "./product/product.module";
 
 
 @NgModule({
@@ -22,17 +21,15 @@ import { AppRoutingModule } from "./app-routing.module";
     BPropertyComponent,
     AppNumbersComponent,
     InputComponent,
-    OutputComponent,
-    ProductAddComponent,
-    ProductEditComponent,
-    ProductListComponent
+    OutputComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

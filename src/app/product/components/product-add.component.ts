@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-add',
-  templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.css']
+  templateUrl: './../templates/product-add.component.html'
 })
 export class ProductAddComponent implements OnInit {
 
