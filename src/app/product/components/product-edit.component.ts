@@ -24,17 +24,22 @@ export class ProductEditComponent implements OnInit {
     this._ActivatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
       this.id = id;
-      this.product = this._ProductService.find(id);
-      this.productForm = new FormGroup({
-        name: new FormControl(this.product.name,[
-          Validators.required,
-          Validators.minLength(3)
-        ]),
-        price: new FormControl(this.product.price,[
-          Validators.required,
-          Validators.minLength(3)
-        ]),
+
+      this._ProductService.find(id).subscribe(product => {
+        this.product = product;
+        this.productForm = new FormGroup({
+          name: new FormControl(this.product.name,[
+            Validators.required,
+            Validators.minLength(3)
+          ]),
+          price: new FormControl(this.product.price,[
+            Validators.required,
+            Validators.minLength(3)
+          ]),
+        });
       });
+
+      
     });
 
     
@@ -46,10 +51,14 @@ export class ProductEditComponent implements OnInit {
       name: this.productForm.value.name,
       price: this.productForm.value.price
     }
-    this._ProductService.update(this.id,productData);
+    // call service update
+    this._ProductService.update(this.id, productData).subscribe(() => {
+      //chuyen huong ve list
+      this._Router.navigate(['/product']);
+    }, e => {
+      console.log(e);
+    });
 
-    //chuyen huong ve list
-    this._Router.navigate(['/']);
   }
 
 }
